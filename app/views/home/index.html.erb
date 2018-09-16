@@ -6,7 +6,9 @@
 <% @feeds.each do |f| %>
     <div style='border: 1px solid black;'>
         <a href='feeds/<%= f.id %>' data-method='DELETE'>삭제하기</a>
+        <a href='feeds/<%= f.id %>' data-method='GET'>업데이트하기</a>
         <div><%= f.title %></div>
         <div><%= f.content %></div>
+
     </div>
 <% end %>

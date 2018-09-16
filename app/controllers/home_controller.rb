@@ -21,4 +21,20 @@ class HomeController < ApplicationController
         redirect_to action: 'index'
     end
 
+    def update
+        feed = Feed.find(params[:id])
+        @title = feed.title
+        @content = feed.content
+        @id = params[:id]
+    end
+
+    def done
+        feed = Feed.find(params[:id])
+        feed.title = params[:title]
+        feed.content = params[:content]
+        feed.save
+
+        redirect_to action: 'index'
+    end
+
 end
