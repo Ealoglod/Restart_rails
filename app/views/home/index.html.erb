@@ -1,0 +1,12 @@
+<h1>
+    Feed Page!
+    <a href='/feeds/new'>New Feed</a>
+</h1>
+
+<% @feeds.each do |f| %>
+    <div style='border: 1px solid black;'>
+        <a href='feeds/<%= f.id %>' data-method='DELETE'>삭제하기</a>
+        <div><%= f.title %></div>
+        <div><%= f.content %></div>
+    </div>
+<% end %>
