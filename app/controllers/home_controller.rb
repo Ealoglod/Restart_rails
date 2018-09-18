@@ -37,4 +37,18 @@ class HomeController < ApplicationController
         redirect_to action: 'index'
     end
 
+    def create_comment
+        new_comment = FeedComment.new
+        new_comment.content = params[:content]
+        new_comment.feed_id = params[:id]
+        new_comment.save
+
+        redirect_to action: 'index'
+    end
+
+    def comment_destroy
+        FeedComment.destroy(params[:id])
+        redirect_to action: 'index'
+    end
+
 end

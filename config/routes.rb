@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   delete '/feeds/:id' => 'home#destroy'
   get '/feeds/:id' => 'home#update'
   post '/feeds/:id' => 'home#done'
+  post '/feeds/:id/comments' => 'home#create_comment'
+  delete '/comments/:id' => 'home#comment_destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
