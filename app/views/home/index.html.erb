@@ -7,14 +7,16 @@
     <div style='border: 1px solid black;'>
         <a href='feeds/<%= f.id %>' data-method='DELETE'>삭제하기</a>
         <a href='feeds/<%= f.id %>' data-method='GET'>업데이트하기</a>
-        <div><%= f.title %></div>
-        <div><%= f.content %></div>
+        Artist: <div><%= f.title %></div>
+        Album: <div><%= f.content %></div>
+        User: <div><%= f.user.name %></div>
         <form action='feeds/<%= f.id %>/comments' method='POST'>
             <input type='text' name='content'/>
             <button>댓글 작성</button>
         </form>
         <% f.feed_comments.each do |c| %>
-            <div><%= c.content %></div>
+            Content: <div><%= c.content %></div>
+            User: <div><%= c.user.name %></div>
             <a href='comments/<%= c.id %>' data-method='DELETE'>삭제하기</a>
         <% end %>
     </div>

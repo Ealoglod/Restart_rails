@@ -1,6 +1,9 @@
 class HomeController < ApplicationController
-
+        before_action :authenticate_user!
     def index
+        if !user_signed_in?
+            redirect_to action 'users/sign_in'
+        end
         @feeds = Feed.all
     end
 
@@ -11,6 +14,7 @@ class HomeController < ApplicationController
         feed = Feed.new
         feed.title = params[:title]
         feed.content = params[:content]
+        feed.user_id = current_user.id
         feed.save
 
         redirect_to action: 'index'
@@ -41,6 +45,7 @@ class HomeController < ApplicationController
         new_comment = FeedComment.new
         new_comment.content = params[:content]
         new_comment.feed_id = params[:id]
+        new_comment.user_id = current_user.id
         new_comment.save
 
         redirect_to action: 'index'
